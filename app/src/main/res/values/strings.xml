@@ -5,7 +5,8 @@
     <string name="quiz">Quiz</string>
 
     <!-- home -->
-    <string name="hint_name">Please input your name before start</string>
+    <string name="hint_input_name">Please input your name before start</string>
+    <string name="error_input_name">You cannot leave this blank</string>
     <string name="button_start">Start</string>
     <string name="home_title">Before you begin</string>
 

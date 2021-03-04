@@ -12,6 +12,7 @@ Jitrapon Tiachunpun
 1. Fix app crashes on launch due to a theme issue on dark mode
 2. Fix question text colored as black in dark mode
 3. Fix name input text allowing multiple lines
+4. Fix filling in empty name allowing to proceed to quiz screen
 
 ## Application Specs
 
