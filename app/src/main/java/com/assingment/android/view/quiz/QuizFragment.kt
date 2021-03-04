@@ -39,7 +39,7 @@ class QuizFragment: Fragment() {
         }
 
         quizViewModel.quizQuestions.observe(viewLifecycleOwner, { it ->
-            pager.adapter = QuizAdapter(it, model)
+            pager.adapter = QuizAdapter(it, quizViewModel)
         })
 
         pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
