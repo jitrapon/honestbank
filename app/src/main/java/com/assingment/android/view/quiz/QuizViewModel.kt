@@ -43,7 +43,7 @@ class QuizViewModel(application: Application): AndroidViewModel(application) {
     }
 
     init {
-        quizQuestions.value = Data.quizQuestions
+        quizQuestions.value = Data.quizQuestions.shuffled()
         choices = ArrayList()
         for (i in Data.quizQuestions.indices) {
             choices.add(NO_CHOICE)
