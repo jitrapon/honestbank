@@ -1,6 +1,7 @@
 package com.assingment.android.view.quiz
 
 import android.app.Application
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,7 +22,8 @@ class QuizViewModel(application: Application): AndroidViewModel(application) {
     val page: LiveData<Int>
         get() = _page
 
-    private val choices: ArrayList<Int>
+    @VisibleForTesting
+    val choices: ArrayList<Int>
 
     private var _score = MutableLiveData<Int>()
     val score: LiveData<Int>
