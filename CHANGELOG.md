@@ -2,9 +2,13 @@
 
 Jitrapon Tiachunpun
 
-## Bug List
+## Improvements
 
-1. Fix app crashes on launch due to a theme issue on dark mode ()
+1. Allow only portrait orientation
+
+## Bug Fixes
+
+1. Fix app crashes on launch due to a theme issue on dark mode
 
 ## Application Specs
 
