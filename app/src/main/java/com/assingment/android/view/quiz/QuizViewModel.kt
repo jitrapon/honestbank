@@ -1,6 +1,7 @@
 package com.assingment.android.view.quiz
 
 import android.app.Application
+import android.util.Log
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -14,7 +15,7 @@ import com.assingment.android.view.NavigationEvent
 import kotlin.math.max
 import kotlin.math.min
 
-class QuizViewModel(application: Application): AndroidViewModel(application) {
+class QuizViewModel(application: Application) : AndroidViewModel(application) {
 
     val quizQuestions = MutableLiveData<List<QuizQuestion>>()
 
@@ -65,10 +66,16 @@ class QuizViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun selectChoice(questionIndex: Int, choiceIndex: Int) {
+        val lastSelectedIndex = choices[questionIndex]
         choices[questionIndex] = choiceIndex
-        val expected = Data.quizQuestions[questionIndex].answer
-        val actual = Data.quizQuestions[questionIndex].choices[choiceIndex]
-        _score.value = if (expected == actual) score.value!! + 1 else score.value
+        val expected = quizQuestions.value!![questionIndex].answer
+        val actual = quizQuestions.value!![questionIndex].choices[choiceIndex]
+        _score.value = if (expected == actual) {
+            score.value!! + 1
+        } else {
+            if (lastSelectedIndex == quizQuestions.value!![questionIndex].choices.indexOf(expected)) score.value!! - 1
+            else score.value!!
+        }
     }
 
     fun getSelectedChoice(questionIndex: Int): Int {

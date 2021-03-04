@@ -31,13 +31,15 @@ class ScoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val name = view.findViewById<TextView>(R.id.name)
-        val score = view.findViewById<TextView>(R.id.score)
+        val scoreText = view.findViewById<TextView>(R.id.score)
         val button = view.findViewById<Button>(R.id.ctaButton)
         name.text = viewModel.name.value
-        score.text = viewModel.score.toString()
 
         viewModel.apply {
             navigation.observe(viewLifecycleOwner, ::navigateToDestination)
+            score.observe(viewLifecycleOwner, {
+                scoreText.text = "$it"
+            })
         }
         button.setOnClickListener {
             viewModel.navigateToWelcomeScreen()

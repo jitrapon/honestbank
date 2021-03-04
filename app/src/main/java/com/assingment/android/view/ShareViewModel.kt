@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.assingment.android.LiveEvent
 import com.assingment.android.R
+import com.assingment.android.model.ScoreRepository
 
 class ShareViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -24,7 +25,11 @@ class ShareViewModel(application: Application) : AndroidViewModel(application) {
     val nameError: LiveData<String?>
         get() = _nameError
 
-    var score = 0
+    private val scoreRepository: ScoreRepository = ScoreRepository()
+
+    private val _score = MutableLiveData<Int>()
+    val score: LiveData<Int>
+        get() = _score
 
     fun onNameInputTextChanged(nameTextInput: CharSequence?) {
         if (!nameTextInput.isNullOrEmpty()) {
@@ -36,6 +41,7 @@ class ShareViewModel(application: Application) : AndroidViewModel(application) {
         if (nameTextInput.isBlank()) {
             _nameError.value = getApplication<Application>().getString(R.string.error_input_name)
         } else {
+            _score.value = 0
             _name.value = nameTextInput.toString()
             _nameError.value = null
             _navigation.value = NavigationEvent(R.id.action_homeFragment_to_quizFragment)
@@ -44,6 +50,12 @@ class ShareViewModel(application: Application) : AndroidViewModel(application) {
 
     fun navigateToWelcomeScreen() {
         _navigation.value = NavigationEvent(R.id.action_scoreFragment_to_homeFragment)
+    }
+
+    fun saveScore(score: Int) {
+        _score.value = score
+        val name = _name.value ?: return
+        scoreRepository.saveScore(name, score)
     }
 }
 

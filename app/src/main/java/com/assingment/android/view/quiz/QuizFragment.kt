@@ -50,7 +50,7 @@ class QuizFragment: Fragment() {
                 pager.setCurrentItem(it, true)
             })
             score.observe(viewLifecycleOwner, {
-                model.score = it
+                model.saveScore(it)
             })
             message.observe(viewLifecycleOwner, {
                 it ?: return@observe
