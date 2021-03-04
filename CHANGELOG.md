@@ -9,6 +9,8 @@ Jitrapon Tiachunpun
 ## Bug Fixes
 
 1. Fix app crashes on launch due to a theme issue on dark mode
+2. Fix question text colored as black in dark mode
+3. Fix name input text allowing multiple lines
 
 ## Application Specs
 

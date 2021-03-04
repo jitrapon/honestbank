@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -30,6 +31,8 @@ class HomeFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.ctaButton)
         val editText = view.findViewById<EditText>(R.id.nameInput)
+
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home_title)
 
         button.setOnClickListener {
             model.name.value = editText.text.toString()
