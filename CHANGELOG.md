@@ -6,6 +6,7 @@ Jitrapon Tiachunpun
 
 1. Allow only portrait orientation
 2. Adjust size of layout when the keyboard appears to fit the screen
+3. Add test cases for home screen
 
 ## Bug Fixes
 
