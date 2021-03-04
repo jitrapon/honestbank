@@ -4,7 +4,7 @@ Jitrapon Tiachunpun
 
 ## Bug List
 
-1. Application crashes on launch
+1. Fix app crashes on launch due to a theme issue on dark mode ()
 
 ## Application Specs
 
