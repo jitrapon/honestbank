@@ -2,6 +2,7 @@ package com.assingment.android.view
 
 import android.app.Application
 import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -46,3 +47,8 @@ class ShareViewModel(application: Application) : AndroidViewModel(application) {
  * A data class that represents an action of navigation
  */
 data class NavigationEvent(@IdRes val destination: Int)
+
+/**
+ * A data class that represents an action of showing a message
+ */
+data class MessageEvent(@StringRes val resId: Int)

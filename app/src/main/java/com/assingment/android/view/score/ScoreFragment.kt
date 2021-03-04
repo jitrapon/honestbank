@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.assingment.android.R
 import com.assingment.android.view.ShareViewModel
@@ -14,7 +15,7 @@ class ScoreFragment : Fragment() {
 
     private val layoutId: Int = R.layout.fragment_score
 
-    private val model: ShareViewModel by viewModels()
+    private val model: ShareViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -4,11 +4,12 @@
     <string name="submit">Submit</string>
     <string name="quiz">Quiz</string>
 
-    <!-- home -->
     <string name="hint_input_name">Please input your name before start</string>
     <string name="error_input_name">You cannot leave this blank</string>
     <string name="button_start">Start</string>
     <string name="home_title">Before you begin</string>
+
+    <string name="error_answer">You have not answered all questions!</string>
 
     <string name="back"><![CDATA[<<]]></string>
     <string name="next">Next</string>
