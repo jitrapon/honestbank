@@ -16,6 +16,8 @@ Jitrapon Tiachunpun
 4. Fix filling in empty name allowing to proceed to quiz screen
 5. Fix quiz choices not correctly saved
 6. Fix quiz score not saved properly
+7. Fix quiz questions not displayed randomly
+8. Fix button not navigating back to welcome screen in score screen
 
 ## Application Specs
 

@@ -4,18 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.assingment.android.R
+import com.assingment.android.view.NavigationEvent
 import com.assingment.android.view.ShareViewModel
 
 class ScoreFragment : Fragment() {
 
     private val layoutId: Int = R.layout.fragment_score
 
-    private val model: ShareViewModel by activityViewModels()
+    private val viewModel: ShareViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +32,20 @@ class ScoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val name = view.findViewById<TextView>(R.id.name)
         val score = view.findViewById<TextView>(R.id.score)
-        name.text = model.name.value
-        score.text = model.score.toString()
+        val button = view.findViewById<Button>(R.id.ctaButton)
+        name.text = viewModel.name.value
+        score.text = viewModel.score.toString()
+
+        viewModel.apply {
+            navigation.observe(viewLifecycleOwner, ::navigateToDestination)
+        }
+        button.setOnClickListener {
+            viewModel.navigateToWelcomeScreen()
+        }
+    }
+
+    private fun navigateToDestination(navigation: NavigationEvent?) {
+        navigation ?: return
+        findNavController().navigate(navigation.destination)
     }
 }

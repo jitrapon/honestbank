@@ -41,6 +41,10 @@ class ShareViewModel(application: Application) : AndroidViewModel(application) {
             _navigation.value = NavigationEvent(R.id.action_homeFragment_to_quizFragment)
         }
     }
+
+    fun navigateToWelcomeScreen() {
+        _navigation.value = NavigationEvent(R.id.action_scoreFragment_to_homeFragment)
+    }
 }
 
 /**

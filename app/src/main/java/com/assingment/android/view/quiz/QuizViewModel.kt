@@ -1,8 +1,6 @@
 package com.assingment.android.view.quiz
 
 import android.app.Application
-import android.util.SparseIntArray
-import androidx.core.util.set
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
