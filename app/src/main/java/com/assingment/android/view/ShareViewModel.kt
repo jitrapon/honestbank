@@ -6,7 +6,6 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.assingment.android.LiveEvent
 import com.assingment.android.R
 import com.assingment.android.model.ScoreRepository
@@ -30,6 +29,10 @@ class ShareViewModel(application: Application) : AndroidViewModel(application) {
     private val _score = MutableLiveData<Int>()
     val score: LiveData<Int>
         get() = _score
+
+    private val _scoreBoard = MutableLiveData<List<ScoreRank>>()
+    val scoreBoard: LiveData<List<ScoreRank>>
+        get() = _scoreBoard
 
     fun onNameInputTextChanged(nameTextInput: CharSequence?) {
         if (!nameTextInput.isNullOrEmpty()) {
@@ -57,6 +60,16 @@ class ShareViewModel(application: Application) : AndroidViewModel(application) {
         val name = _name.value ?: return
         scoreRepository.saveScore(name, score)
     }
+
+    fun getScoreBoard() {
+        val scoreBoard = scoreRepository.getScores().map { (name, score) ->
+            ScoreRank(0, name, score)
+        }.sortedByDescending { it.score }
+        scoreBoard.forEachIndexed { index, value ->
+            value.rank = index + 1
+        }
+        _scoreBoard.value = scoreBoard
+    }
 }
 
 /**
@@ -68,3 +81,8 @@ data class NavigationEvent(@IdRes val destination: Int)
  * A data class that represents an action of showing a message
  */
 data class MessageEvent(@StringRes val resId: Int)
+
+/**
+ * List of scores and ranks
+ */
+data class ScoreRank(var rank: Int, val name: String, val score: Int)

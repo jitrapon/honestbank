@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.assingment.android.R
 import com.assingment.android.view.NavigationEvent
 import com.assingment.android.view.ShareViewModel
@@ -34,12 +35,18 @@ class ScoreFragment : Fragment() {
         val scoreText = view.findViewById<TextView>(R.id.score)
         val button = view.findViewById<Button>(R.id.ctaButton)
         name.text = viewModel.name.value
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
         viewModel.apply {
             navigation.observe(viewLifecycleOwner, ::navigateToDestination)
             score.observe(viewLifecycleOwner, {
                 scoreText.text = "$it"
             })
+            scoreBoard.observe(viewLifecycleOwner, {
+                it ?: return@observe
+                recyclerView.adapter = ScoreAdapter(it)
+            })
+            getScoreBoard()
         }
         button.setOnClickListener {
             viewModel.navigateToWelcomeScreen()

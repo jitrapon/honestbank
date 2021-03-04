@@ -8,7 +8,7 @@ class ScoreRepository {
         scores[name] = score
     }
 
-    fun getScore(name: String): Int? {
-        return scores[name]
+    fun getScores(): HashMap<String, Int> {
+        return scores
     }
 }

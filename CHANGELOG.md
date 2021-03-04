@@ -8,6 +8,7 @@ Jitrapon Tiachunpun
 2. Adjust size of layout when the keyboard appears to fit the screen
 3. Add test cases for home screen
 4. Add test cases for quiz screen
+5. Add scoreboard
 
 ## Bug Fixes
 
