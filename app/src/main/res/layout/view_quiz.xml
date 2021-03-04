@@ -18,7 +18,7 @@
             android:id="@+id/question"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="8dp"
-            android:textColor="#000"
+            android:textColor="?colorOnSecondary"
             android:textSize="18dp"
             tools:text="Is this right?"
             android:layout_width="match_parent"
